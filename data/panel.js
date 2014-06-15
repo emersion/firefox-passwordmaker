@@ -7,6 +7,15 @@ var domainEntry = document.getElementById("domain"),
   prefs = null,
   username = '';
 
+var charsets = {
+  'alpha': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+  'alphanum': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+  'alphanumsym': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()_-+={}|[]\:";\'<>?,./',
+  'hex': '0123456789abcdef',
+  'num': '0123456789',
+  'sym': '`~!@#$%^&*()_-+={}|[]\:";\'<>?,./'
+};
+
 var onUpdate = function () {
   var data = {
     url: domainEntry.value,
@@ -18,7 +27,7 @@ var onUpdate = function () {
     length: prefs.length,
     prefix: '',
     suffix: '',
-    selectedChar: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()_-+={}|[]\:";\'<>?,./',
+    selectedChar: charsets[prefs.charset] || charsets['alphanum+symbols'],
     counterOffset: ''
   };
 

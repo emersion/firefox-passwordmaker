@@ -10,7 +10,7 @@
     "name": "hashAlgorithm",
     "title": "Hash algorithm",
     "type": "menulist",
-    "value": "md5",
+    "value": "sha256",
     "options": [{
       "value": "sha256",
       "label": "sha256"
@@ -69,5 +69,35 @@
     "title": "Generated passwords length",
     "type": "integer",
     "value": 8
+  },
+  {
+    "name": "charset",
+    "title": "Character set",
+    "type": "menulist",
+    "value": "alphanumsym",
+    "options": [{
+      "value": "alpha",
+      "label": "Alphas"
+    },
+    {
+      "value": "alphanum",
+      "label": "Alphanumerics"
+    },
+    {
+      "value": "alphanumsym",
+      "label": "Alphanumerics & symbols"
+    },
+    {
+      "value": "hex",
+      "label": "Hexadecimal"
+    },
+    {
+      "value": "num",
+      "label": "Numbers"
+    },
+    {
+      "value": "sym",
+      "label": "Symbols"
+    }]
   }]
 }
