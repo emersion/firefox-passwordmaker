@@ -1,0 +1,73 @@
+{
+  "name": "passwordmaker",
+  "title": "Password Maker X",
+  "id": "jid1-SbKLzc5j3xRe0w",
+  "description": "One password to rule them all!",
+  "author": "emersion <contact@emersion.fr>",
+  "license": "MIT",
+  "version": "0.1",
+  "preferences": [{
+    "name": "hashAlgorithm",
+    "title": "Hash algorithm",
+    "type": "menulist",
+    "value": "md5",
+    "options": [{
+      "value": "sha256",
+      "label": "sha256"
+    },
+    {
+      "value": "hmac-sha256",
+      "label": "hmac-sha256"
+    },
+    {
+      "value": "hmac-sha256_fix",
+      "label": "hmac-sha256_fix"
+    },
+    {
+      "value": "sha1",
+      "label": "sha1"
+    },
+    {
+      "value": "hmac-sha1",
+      "label": "hmac-sha1"
+    },
+    {
+      "value": "md4",
+      "label": "md4"
+    },
+    {
+      "value": "hmac-md4",
+      "label": "hmac-md4"
+    },
+    {
+      "value": "md5",
+      "label": "md5"
+    },
+    {
+      "value": "md5_v6",
+      "label": "md5_v6"
+    },
+    {
+      "value": "hmac-md5",
+      "label": "hmac-md5"
+    },
+    {
+      "value": "hmac-md5_v6",
+      "label": "hmac-md5_v6"
+    },
+    {
+      "value": "rmd160",
+      "label": "rmd160"
+    },
+    {
+      "value": "hmac-rmd160",
+      "label": "hmac-rmd160"
+    }]
+  },
+  {
+    "name": "length",
+    "title": "Generated passwords length",
+    "type": "integer",
+    "value": 8
+  }]
+}
