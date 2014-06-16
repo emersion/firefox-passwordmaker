@@ -25,6 +25,11 @@ Features:
 * 6 included character sets
 * Latest and greatest circular icon technology
 
+How does it work?
+-----------------
+
+![diagram](https://cloud.githubusercontent.com/assets/506932/3291715/4b9b80d6-f587-11e3-9115-d322e5748806.png)
+
 Installing
 ----------
 
