@@ -52,6 +52,10 @@ self.port.on("show", function onShow(data) {
   }
   if (!masterPasswdEntry.value) {
     masterPasswdEntry.value = data.passwd;
+
+    if (data.passwd) { // Master password already saved
+      saveMasterBtn.disabled = true;
+    }
   }
   if (!masterPasswdEntry.value) {
     if (!data.domain) {
@@ -81,4 +85,5 @@ saveBtn.addEventListener('click', function onSaveClick() {
 
 saveMasterBtn.addEventListener('click', function onSaveMasterClick() {
   self.port.emit("master-passwd-save", { passwd: masterPasswdEntry.value });
+  saveMasterBtn.disabled = true;
 });
