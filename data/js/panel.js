@@ -10,29 +10,28 @@ var domainEntry = document.getElementById("domain"),
 var charsets = {
   'alpha': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
   'alphanum': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
-  'alphanumsym': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()_-+={}|[]\:";\'<>?,./',
+  'alphanumsym': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()_-+={}|[]\\:";\'<>?,./',
   'hex': '0123456789abcdef',
   'num': '0123456789',
-  'sym': '`~!@#$%^&*()_-+={}|[]\:";\'<>?,./'
+  'sym': '`~!@#$%^&*()_-+={}|[]\\:";\'<>?,./'
 };
 
 var onUpdate = function () {
-  var data = {
+  var opts = {
     url: domainEntry.value,
     master: masterPasswdEntry.value,
     username: username,
+    modifier: '',
     hashAlgorithm: prefs.hashAlgorithm,
-    whereToUseL33t: false,
-    l33tLevel: 1,
+    whereToUseL33t: 'off',
+    l33tLevel: 0,
     length: prefs.length,
     prefix: '',
     suffix: '',
-    selectedChar: charsets[prefs.charset] || charsets['alphanum+symbols'],
-    counterOffset: ''
+    charset: charsets[prefs.charset] || charsets['alphanumsym']
   };
 
-  var passwd = makePassword(data.url, data.master, data.username, data.hashAlgorithm, data.whereToUseL33t,
-    data.l33tLevel, data.length, data.prefix, data.suffix, data.selectedChar, data.counterOffset);
+  var passwd = generatePassword(opts);
 
   generatedPasswdEntry.value = passwd;
 
@@ -46,13 +45,18 @@ self.port.on("show", function onShow(data) {
     username = data.username;
   }
 
-  domainEntry.value = data.domain;
-  
+  if (data.domain) {
+    domainEntry.value = data.domain;
+  }
   if (!masterPasswdEntry.value) {
     masterPasswdEntry.value = data.passwd;
   }
   if (!masterPasswdEntry.value) {
-    masterPasswdEntry.focus();
+    if (!data.domain) {
+      domainEntry.focus();
+    } else {
+      masterPasswdEntry.focus();
+    }
   } else {
     onUpdate();
     generatedPasswdEntry.focus();
