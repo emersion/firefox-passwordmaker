@@ -13,7 +13,8 @@ var charsets = {
   'alphanumsym': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()_-+={}|[]\\:";\'<>?,./',
   'hex': '0123456789abcdef',
   'num': '0123456789',
-  'sym': '`~!@#$%^&*()_-+={}|[]\\:";\'<>?,./'
+  'sym': '`~!@#$%^&*()_-+={}|[]\\:";\'<>?,./',
+  'custom': ''
 };
 
 var onUpdate = function () {
@@ -21,13 +22,13 @@ var onUpdate = function () {
     url: domainEntry.value,
     master: masterPasswdEntry.value,
     username: username,
-    modifier: '',
-    hashAlgorithm: prefs.hashAlgorithm,
-    whereToUseL33t: 'off',
-    l33tLevel: 0,
-    length: prefs.length,
-    prefix: '',
-    suffix: '',
+    modifier: prefs.modifier || '',
+    hashAlgorithm: prefs.hashAlgorithm || 'md5',
+    whereToUseL33t: prefs.useL33t || 'off',
+    l33tLevel: prefs.l33tLevel || 1,
+    length: prefs.length || 8,
+    prefix: prefs.prefix || '',
+    suffix: prefs.suffix || '',
     charset: charsets[prefs.charset] || charsets['alphanumsym']
   };
 
@@ -40,6 +41,7 @@ var onUpdate = function () {
 
 self.port.on("show", function onShow(data) {
   prefs = data.prefs;
+  charsets.custom = prefs.customCharset || '';
 
   if (data.username != 'undefined') {
     username = data.username;

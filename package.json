@@ -5,7 +5,9 @@
   "description": "One password to rule them all!",
   "author": "emersion <contact@emersion.fr>",
   "license": "MIT",
-  "version": "0.3",
+  "version": "0.4",
+  "icon": "data/icon-48.png",
+  "icon64": "data/icon-64.png",
   "preferences": [{
     "name": "hashAlgorithm",
     "title": "Hash algorithm",
@@ -71,6 +73,12 @@
     "value": 8
   },
   {
+    "name": "modifier",
+    "title": "Modifier",
+    "type": "string",
+    "value": ""
+  },
+  {
     "name": "charset",
     "title": "Character set",
     "type": "menulist",
@@ -98,6 +106,70 @@
     {
       "value": "sym",
       "label": "Symbols"
+    },
+    {
+      "value": "custom",
+      "label": "Custom..."
     }]
+  },
+  {
+    "name": "customCharset",
+    "title": "Custom charset",
+    "type": "string",
+    "value": ""
+  },
+  {
+    "name": "urlComponents",
+    "title": "URL components",
+    "type": "radio",
+    "value": "domain",
+    "options": [{
+      "value": "domain",
+      "label": "Domain"
+    },
+    {
+      "value": "domain+subdomain",
+      "label": "Domain & subdomain(s)"
+    }]
+  },
+  {
+    "name": "useL33t",
+    "title": "Use l33t",
+    "type": "menulist",
+    "value": "off",
+    "options": [{
+      "value": "off",
+      "label": "Never"
+    },
+    {
+      "value": "before",
+      "label": "Before hashing"
+    },
+    {
+      "value": "after",
+      "label": "After hashing"
+    },
+    {
+      "value": "before+after",
+      "label": "Before and after hashing"
+    }]
+  },
+  {
+    "name": "l33tLevel",
+    "title": "L33t level (1 to 9)",
+    "type": "integer",
+    "value": 1
+  },
+  {
+    "name": "prefix",
+    "title": "Password prefix",
+    "type": "string",
+    "value": ""
+  },
+  {
+    "name": "suffix",
+    "title": "Password suffix",
+    "type": "string",
+    "value": ""
   }]
 }
