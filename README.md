@@ -1,7 +1,7 @@
 PasswordMaker
 =============
 
-This extension provides a simple PasswordMaker feature for Firefox.
+This extension provides a simple PasswordMaker feature for Firefox. It's available on Firefox for Linux, Windows, Mac OSX and Android.
 
 ![Screenshot](https://addons.cdn.mozilla.net/img/uploads/previews/full/137/137798.png)
 
@@ -35,7 +35,7 @@ Installing
 
 You can find the extension on Firefox add-ons website: https://addons.mozilla.org/fr/firefox/addon/password-maker-x/
 
-You can install the extension by downloading [`passwordmaker.xpi`](https://github.com/emersion/firefox-passwordmaker/raw/master/passwordmaker.xpi).
+If you want the latest version, you can install the extension by downloading [`passwordmaker.xpi`](https://github.com/emersion/firefox-passwordmaker/raw/master/passwordmaker.xpi) (may contain bugs!).
 
 > There is also an Android app available: https://play.google.com/store/apps/details?id=io.github.eddieringle.android.apps.passwordmaker
 
