@@ -7,15 +7,7 @@ var domainEntry = document.getElementById("domain"),
   prefs = null,
   username = '';
 
-var charsets = {
-  'alpha': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
-  'alphanum': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
-  'alphanumsym': 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#$%^&*()_-+={}|[]\\:";\'<>?,./',
-  'hex': '0123456789abcdef',
-  'num': '0123456789',
-  'sym': '`~!@#$%^&*()_-+={}|[]\\:";\'<>?,./',
-  'custom': ''
-};
+var charsets = {};
 
 var onUpdate = function () {
   var opts = {
@@ -41,7 +33,7 @@ var onUpdate = function () {
 
 self.port.on("show", function onShow(data) {
   prefs = data.prefs;
-  charsets.custom = prefs.customCharset || '';
+  charsets = data.charsets;
 
   if (data.username != 'undefined') {
     username = data.username;
