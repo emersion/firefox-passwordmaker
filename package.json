@@ -5,7 +5,7 @@
   "description": "One password to rule them all!",
   "author": "emersion <contact@emersion.fr>",
   "license": "MIT",
-  "version": "0.6",
+  "version": "0.7",
   "icon": "data/icon-48.png",
   "icon64": "data/icon-64.png",
   "preferences": [{
