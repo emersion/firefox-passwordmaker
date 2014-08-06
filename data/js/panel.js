@@ -1,3 +1,4 @@
+// List of panel entries
 var domainEntry = document.getElementById("domain"),
   masterPasswdEntry = document.getElementById("password-master"),
   generatedPasswdEntry = document.getElementById("password-generated"),
@@ -9,6 +10,7 @@ var domainEntry = document.getElementById("domain"),
 
 var charsets = {};
 
+// Called each time an entry is updated
 var onUpdate = function () {
   var opts = {
     url: domainEntry.value,
@@ -31,10 +33,25 @@ var onUpdate = function () {
   self.port.emit("passwd-generate", { passwd: passwd });
 };
 
+// @see https://github.com/emersion/firefox-passwordmaker/issues/1
+var updateTimeout = null;
+var delayedUpdate = function () {
+  if (typeof updateTimeout !== null) {
+    clearTimeout(updateTimeout);
+  }
+
+  updateTimeout = setTimeout(function () {
+    updateTimeout = null;
+    onUpdate();
+  }, 500);
+};
+
+// When this panel is displayed
 self.port.on("show", function onShow(data) {
   prefs = data.prefs;
   charsets = data.charsets;
 
+  // Prefill entries if possible
   if (data.username != 'undefined') {
     username = data.username;
   }
@@ -61,13 +78,15 @@ self.port.on("show", function onShow(data) {
   }
 });
 
+// Listen for keyup events
 domainEntry.addEventListener('keyup', function onDomainKeyup() {
-  onUpdate();
+  delayedUpdate();
 });
 masterPasswdEntry.addEventListener('keyup', function onDomainKeyup() {
-  onUpdate();
+  delayedUpdate();
 });
 
+// Listen for clicks on buttons
 copyBtn.addEventListener('click', function onCopyClick() {
   self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
 });
