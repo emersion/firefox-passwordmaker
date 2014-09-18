@@ -5,7 +5,7 @@
   "description": "One password to rule them all!",
   "author": "emersion <contact@emersion.fr>",
   "license": "MIT",
-  "version": "0.7",
+  "version": "0.8",
   "icon": "data/icon-48.png",
   "icon64": "data/icon-64.png",
   "preferences": [{
@@ -171,5 +171,23 @@
     "title": "Password suffix",
     "type": "string",
     "value": ""
+  },
+  {
+    "name": "passwordVisibility",
+    "title": "Password visibility",
+    "type": "menulist",
+    "value": "click",
+    "options": [{
+      "value": "click",
+      "label": "Show on click"
+    },
+    {
+      "value": "hover",
+      "label": "Show on hover"
+    },
+    {
+      "value": "always",
+      "label": "Always show"
+    }]
   }]
 }

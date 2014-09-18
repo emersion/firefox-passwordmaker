@@ -51,6 +51,13 @@ self.port.on("show", function onShow(data) {
   prefs = data.prefs;
   charsets = data.charsets;
 
+  // Change generated password entry type according to prefs
+  if (prefs.passwordVisibility == 'always') {
+    generatedPasswdEntry.type = 'text';
+  } else {
+    generatedPasswdEntry.type = 'password';
+  }
+
   // Prefill entries if possible
   if (data.username != 'undefined') {
     username = data.username;
@@ -97,4 +104,25 @@ saveBtn.addEventListener('click', function onSaveClick() {
 saveMasterBtn.addEventListener('click', function onSaveMasterClick() {
   self.port.emit("master-passwd-save", { passwd: masterPasswdEntry.value });
   saveMasterBtn.disabled = true;
+});
+
+generatedPasswdEntry.addEventListener('mouseover', function () {
+  if (prefs && prefs.passwordVisibility == 'hover') {
+    generatedPasswdEntry.type = 'text';
+  }
+});
+generatedPasswdEntry.addEventListener('mouseout', function () {
+  if (prefs && prefs.passwordVisibility == 'hover') {
+    generatedPasswdEntry.type = 'password';
+  }
+});
+generatedPasswdEntry.addEventListener('focus', function () {
+  if (prefs && prefs.passwordVisibility == 'click') {
+    generatedPasswdEntry.type = 'text';
+  }
+});
+generatedPasswdEntry.addEventListener('blur', function () {
+  if (prefs && prefs.passwordVisibility == 'click') {
+    generatedPasswdEntry.type = 'password';
+  }
 });
