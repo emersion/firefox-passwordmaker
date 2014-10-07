@@ -142,15 +142,15 @@
       "label": "Never"
     },
     {
-      "value": "before",
+      "value": "before-hashing",
       "label": "Before hashing"
     },
     {
-      "value": "after",
+      "value": "after-hashing",
       "label": "After hashing"
     },
     {
-      "value": "before+after",
+      "value": "both",
       "label": "Before and after hashing"
     }]
   },
