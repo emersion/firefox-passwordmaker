@@ -6,7 +6,8 @@ var domainEntry = document.getElementById("domain"),
   saveBtn = document.getElementById("btn-save"),
   saveMasterBtn = document.getElementById("btn-save-master"),
   prefs = null,
-  username = '';
+  username = '',
+  isShowing = false;
 
 var charsets = {};
 
@@ -46,16 +47,28 @@ var delayedUpdate = function () {
   }, 500);
 };
 
+var isGeneratedPasswdRevealed = function () {
+  return (generatedPasswdEntry.type == 'text');
+};
+var revealGeneratedPasswd = function () {
+  generatedPasswdEntry.type = 'text';
+  generatedPasswdEntry.select();
+};
+var hideGeneratedPasswd = function () {
+  generatedPasswdEntry.type = 'password';
+};
+
 // When this panel is displayed
 self.port.on("show", function onShow(data) {
   prefs = data.prefs;
   charsets = data.charsets;
+  isShowing = true;
 
   // Change generated password entry type according to prefs
   if (prefs.passwordVisibility == 'always') {
-    generatedPasswdEntry.type = 'text';
+    revealGeneratedPasswd();
   } else {
-    generatedPasswdEntry.type = 'password';
+    hideGeneratedPasswd();
   }
 
   // Prefill entries if possible
@@ -83,6 +96,8 @@ self.port.on("show", function onShow(data) {
     onUpdate();
     generatedPasswdEntry.focus();
   }
+
+  isShowing = false;
 });
 
 // Listen for keyup events
@@ -108,21 +123,29 @@ saveMasterBtn.addEventListener('click', function onSaveMasterClick() {
 
 generatedPasswdEntry.addEventListener('mouseover', function () {
   if (prefs && prefs.passwordVisibility == 'hover') {
-    generatedPasswdEntry.type = 'text';
+    revealGeneratedPasswd();
   }
 });
 generatedPasswdEntry.addEventListener('mouseout', function () {
   if (prefs && prefs.passwordVisibility == 'hover') {
-    generatedPasswdEntry.type = 'password';
+    hideGeneratedPasswd();
   }
 });
 generatedPasswdEntry.addEventListener('focus', function () {
-  if (prefs && prefs.passwordVisibility == 'click') {
-    generatedPasswdEntry.type = 'text';
+  if (!generatedPasswdEntry.value.length) {
+    onUpdate();
+  }
+  if (!isShowing && prefs && prefs.passwordVisibility == 'click') {
+    revealGeneratedPasswd();
   }
 });
 generatedPasswdEntry.addEventListener('blur', function () {
   if (prefs && prefs.passwordVisibility == 'click') {
-    generatedPasswdEntry.type = 'password';
+    hideGeneratedPasswd();
+  }
+});
+generatedPasswdEntry.addEventListener('click', function () {
+  if (prefs && prefs.passwordVisibility == 'click' && !isGeneratedPasswdRevealed()) {
+    revealGeneratedPasswd();
   }
 });
