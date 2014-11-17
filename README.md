@@ -23,6 +23,7 @@ Features:
   * RIPEMD-160
   * HMAC-RIPEMD-160
 * 6 included character sets
+* Available in English and French (add your own language !)
 * Latest and greatest circular icon technology
 
 How does it work?
