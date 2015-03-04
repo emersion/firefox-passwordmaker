@@ -1,0 +1,12 @@
+#icon-save-master, #icon-copy {
+	width: 18px;
+	height: 18px;
+	background-image: url("chrome://browser/skin/Toolbar.png");
+	background-repeat: no-repeat;
+}
+#icon-save-master {
+	background-position: -180px 0;
+}
+#icon-copy {
+	background-position: -504px 0;
+}
