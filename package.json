@@ -189,5 +189,12 @@
       "value": "always",
       "label": "Always show"
     }]
+  },
+  {
+    "name": "hotKey",
+    "title": "Keyboard shortcut",
+    "description": "Examples: accel-s, meta-shift-i, control-alt-d, control-shift-i (accel is Ctrl/Cmd). Press this shortcut and Return in a password field to fill it automatically.",
+    "type": "string",
+    "value": "accel-f6"
   }]
 }

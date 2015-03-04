@@ -3,7 +3,7 @@ var domainEntry = document.getElementById("domain"),
   masterPasswdEntry = document.getElementById("password-master"),
   generatedPasswdEntry = document.getElementById("password-generated"),
   copyBtn = document.getElementById("btn-copy"),
-  saveBtn = document.getElementById("btn-save"),
+  autoFillBtn = document.getElementById("btn-auto-fill"),
   saveMasterBtn = document.getElementById("btn-save-master"),
   prefs = null,
   username = '',
@@ -112,9 +112,7 @@ masterPasswdEntry.addEventListener('keyup', function onDomainKeyup() {
 copyBtn.addEventListener('click', function onCopyClick() {
   self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
 });
-saveBtn.addEventListener('click', function onSaveClick() {
-  self.port.emit("passwd-save", { passwd: generatedPasswdEntry.value });
-});
+
 
 saveMasterBtn.addEventListener('click', function onSaveMasterClick() {
   self.port.emit("master-passwd-save", { passwd: masterPasswdEntry.value });
@@ -149,3 +147,22 @@ generatedPasswdEntry.addEventListener('click', function () {
     revealGeneratedPasswd();
   }
 });
+function onReturnPress(e){
+  if (e.keyCode == 13) {
+    if (generatedPasswdEntry.value.length!=0) {
+        // self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
+        self.port.emit('auto_fill_password', { passwd: generatedPasswdEntry.value }); // 这里port 一个click-link事件
+    }
+    return false;
+  }
+}
+generatedPasswdEntry.addEventListener('keypress',onReturnPress);
+masterPasswdEntry.addEventListener('keypress',onReturnPress);
+domainEntry.addEventListener('keypress',onReturnPress);
+autoFillBtn.addEventListener('click', function(){
+  if (generatedPasswdEntry.value.length!=0) {
+    // self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
+    self.port.emit('auto_fill_password', { passwd: generatedPasswdEntry.value }); // 这里port 一个click-link事件
+  }
+});
+
