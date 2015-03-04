@@ -1,8 +1,27 @@
-<label><strong>Domain</strong>: <br><input type="text" id="domain"></label><br>
-<label><strong>Master password</strong>: <br><input type="password" id="password-master"><button id="btn-save-master" tabindex="-1">Save</button></label><br>
-<label><strong>Generated password</strong>: <br><input type="password" id="password-generated"><button id="btn-copy" tabindex="-1">Copy</button></label><br>
-<button id="btn-auto-fill" >Auto fill Password</button></label><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PasswordMaker</title>
 
-<div style="float: right;">
-	<button id="btn-save" style="display: none;">Replace existing password</button>
-</div>
+	<link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/panel.css">
+</head>
+<body>
+	<label><strong>Domain</strong>:<br><input type="text" id="domain"></label><br>
+	<label for="password-master">
+		<div class="btn-ctn">
+			<button id="btn-save-master" tabindex="-1" title="Save"><i class="icon-floppy"></i></button>
+		</div>
+		<strong>Master password</strong>:<br>
+		<input type="password" id="password-master">
+	</label><br>
+	<label for="password-generated">
+		<div class="btn-ctn">
+			<button id="btn-copy" tabindex="-1" title="Copy"><i class="icon-docs"></i></button><button id="btn-auto-fill" tabindex="-1" title="Autofill password"><i class="icon-login"></i></button>
+		</div>
+		<strong>Generated password</strong>:<br>
+		<input type="password" id="password-generated">
+	</label>
+</body>
+</html>

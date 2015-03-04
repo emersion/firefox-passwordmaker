@@ -190,12 +190,11 @@
       "label": "Always show"
     }]
   },
-{
+  {
     "name": "hotKey",
-    "title": "hotKey",
-    "description": "eq. accel-s meta-shift-i control-alt-d control-shift-i. accel equal to Windows.ctrl or OSX.cmd.    if you press hotkey in a password field and press Return after you fill your master password the password field will be filled  automatically",
+    "title": "Keyboard shortcut",
+    "description": "Examples: accel-s, meta-shift-i, control-alt-d, control-shift-i (accel is Ctrl/Cmd). Press this shortcut and Return in a password field to fill it automatically.",
     "type": "string",
     "value": "accel-f6"
-}
-]
+  }]
 }

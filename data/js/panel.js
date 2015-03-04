@@ -3,7 +3,6 @@ var domainEntry = document.getElementById("domain"),
   masterPasswdEntry = document.getElementById("password-master"),
   generatedPasswdEntry = document.getElementById("password-generated"),
   copyBtn = document.getElementById("btn-copy"),
-  saveBtn = document.getElementById("btn-save"),
   autoFillBtn = document.getElementById("btn-auto-fill"),
   saveMasterBtn = document.getElementById("btn-save-master"),
   prefs = null,
@@ -112,9 +111,6 @@ masterPasswdEntry.addEventListener('keyup', function onDomainKeyup() {
 // Listen for clicks on buttons
 copyBtn.addEventListener('click', function onCopyClick() {
   self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
-});
-saveBtn.addEventListener('click', function onSaveClick() {
-  self.port.emit("passwd-save", { passwd: generatedPasswdEntry.value });
 });
 
 
