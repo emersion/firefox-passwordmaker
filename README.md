@@ -3,7 +3,8 @@ PasswordMaker
 
 This extension provides a simple PasswordMaker feature for Firefox. It's available on Firefox for Linux, Windows, Mac OSX and Android.
 
-![Screenshot](https://addons.cdn.mozilla.net/img/uploads/previews/full/137/137798.png)
+![PasswordMaker 0.10](https://cloud.githubusercontent.com/assets/506932/6512779/b9769dd0-c376-11e4-95df-46fb0940d996.png)
+
 
 Features:
 * Action button with domain name autocompletion, master password saving (in Firefox's secure database) and clipboard support
