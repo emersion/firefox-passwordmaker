@@ -1,14 +1,19 @@
 label {
 	display: inline-block;
 	position: relative;
+	width: 100%;
 }
 .btn-ctn {
 	position: absolute;
-	right: 2px;
-	bottom: 4px;
+	right: 0;
+	bottom: 0.3em;
 }
 .btn-ctn button {
 	border: none;
 	background: none;
 	padding: 0;
+}
+input {
+	width: 100%;
+	box-sizing: border-box;
 }
