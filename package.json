@@ -13,7 +13,7 @@
     "fennec": ">=38.0a1"
   },
   "license": "MIT",
-  "permissions": ["private-browsing"],
+  "permissions": { "private-browsing": true },
   "preferences": [{
     "name": "hashAlgorithm",
     "title": "Hash algorithm",
