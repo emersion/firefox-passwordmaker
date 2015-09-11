@@ -1,13 +1,19 @@
 {
-  "name": "passwordmaker",
   "title": "Password Maker X",
-  "id": "jid1-SbKLzc5j3xRe0w",
-  "description": "One password to rule them all!",
-  "author": "emersion <contact@emersion.fr>",
-  "license": "MIT",
-  "version": "0.11",
+  "name": "password-maker-x",
+  "version": "1.0.0",
+  "description": "Generate per-website passwords based on a master one.",
   "icon": "data/icon-48.png",
   "icon64": "data/icon-64.png",
+  "main": "index.js",
+  "author": "emersion (http://emersion.fr)",
+  "homepage": "https://github.com/emersion/firefox-passwordmaker",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "permissions": ["private-browsing"],
   "preferences": [{
     "name": "hashAlgorithm",
     "title": "Hash algorithm",

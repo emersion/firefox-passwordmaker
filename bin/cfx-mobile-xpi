@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-
-python2 ~/software/addon-sdk-1.17/bin/cfx xpi --force-mobile

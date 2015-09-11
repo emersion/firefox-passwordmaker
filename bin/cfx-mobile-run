@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-
-python2 ~/software/addon-sdk-1.17/bin/cfx run -a fennec-on-device -b /opt/android-sdk/platform-tools/adb --mobile-app firefox_beta --force-mobile

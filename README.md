@@ -1,7 +1,7 @@
 PasswordMaker
 =============
 
-This extension provides a simple PasswordMaker feature for Firefox. It's available on Firefox for Linux, Windows, Mac OSX and Android.
+This extension provides a simple PasswordMaker feature for Firefox. It's available on Firefox for Linux, Windows, OS X and Android.
 
 ![PasswordMaker 0.11](https://cloud.githubusercontent.com/assets/506932/8762930/6fca6812-2d87-11e5-911b-6a7e354fcc45.png)
 
@@ -46,12 +46,12 @@ This extension was built using the [add-on SDK](https://developer.mozilla.org/en
 
 To run the extension:
 ```
-cfx run
+jpm run
 ```
 
 To build the extension using the SDK:
 ```
-cfx xpi
+jpm xpi
 ```
 
 Licence

@@ -147,22 +147,20 @@ generatedPasswdEntry.addEventListener('click', function () {
     revealGeneratedPasswd();
   }
 });
-function onReturnPress(e){
-  if (e.keyCode == 13) {
-    if (generatedPasswdEntry.value.length!=0) {
-        // self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
-        self.port.emit('auto_fill_password', { passwd: generatedPasswdEntry.value }); // 这里port 一个click-link事件
-    }
-    return false;
+
+// Auto-fill password
+function autoFillPasswd() {
+  if (generatedPasswdEntry.value.length!=0) {
+    //self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
+    self.port.emit("passwd-auto-fill", { passwd: generatedPasswdEntry.value });
   }
 }
-generatedPasswdEntry.addEventListener('keypress',onReturnPress);
-masterPasswdEntry.addEventListener('keypress',onReturnPress);
-domainEntry.addEventListener('keypress',onReturnPress);
-autoFillBtn.addEventListener('click', function(){
-  if (generatedPasswdEntry.value.length!=0) {
-    // self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
-    self.port.emit('auto_fill_password', { passwd: generatedPasswdEntry.value }); // 这里port 一个click-link事件
+
+document.addEventListener('keypress', function (event) {
+  if (event.keyCode == 13) { // Enter key
+    event.preventDefault();
+    autoFillPasswd();
   }
 });
 
+autoFillBtn.addEventListener('click', autoFillPasswd);
