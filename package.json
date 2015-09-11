@@ -1,6 +1,7 @@
 {
   "title": "Password Maker X",
   "name": "password-maker-x",
+  "id": "jid1-SbKLzc5j3xRe0w@jetpack",
   "version": "1.0.0",
   "description": "Generate per-website passwords based on a master one.",
   "icon": "resource://@password-maker-x/data/icon-48.png",
