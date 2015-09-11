@@ -35,7 +35,7 @@ Installing
 
 You can find the extension on Firefox add-ons website: https://addons.mozilla.org/fr/firefox/addon/password-maker-x/
 
-If you want the latest version, you can install the extension by downloading [`passwordmaker.xpi`](https://github.com/emersion/firefox-passwordmaker/raw/master/passwordmaker.xpi) (may contain bugs!).
+If you want the latest version, you can install the extension by downloading `passwordmaker.xpi` and loading it from your addon settings (may contain bugs!).
 
 > There is also an Android app available: https://play.google.com/store/apps/details?id=io.github.eddieringle.android.apps.passwordmaker
 
