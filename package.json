@@ -2,7 +2,7 @@
   "title": "Password Maker X",
   "name": "password-maker-x",
   "id": "jid1-SbKLzc5j3xRe0w@jetpack",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generate per-website passwords based on a master one.",
   "icon": "resource://jid1-SbKLzc5j3xRe0w-at-jetpack/data/icon-48.png",
   "main": "index.js",
@@ -15,6 +15,9 @@
   "license": "MIT",
   "permissions": {
     "private-browsing": true
+  },
+  "dependencies": {
+    "passwordmaker": "^0.1.0"
   },
   "preferences": [
     {
@@ -216,8 +219,5 @@
       "type": "string",
       "value": "accel-f6"
     }
-  ],
-  "dependencies": {
-    "passwordmaker": "^0.1.0"
-  }
+  ]
 }
