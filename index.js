@@ -2,6 +2,8 @@ var self = require('sdk/self');
 var tabs = require('sdk/tabs');
 var urls = require('sdk/url');
 
+var makePassword = require('passwordmaker');
+
 var passwords = require('sdk/passwords');
 var prefs = require('sdk/simple-prefs').prefs;
 
@@ -9,44 +11,6 @@ let { Cc, Ci, Cu } = require('chrome');
 
 var instance = Cc['@mozilla.org/moz/jssubscript-loader;1'];
 var loader = instance.getService(Ci.mozIJSSubScriptLoader);
-
-/**
- * Load a script (sync).
- * @param  {String} url The script URL.
- */
-function loadScript(url) {
-  loader.loadSubScript(url);
-}
-
-/**
- * Returns a list of dependencies URLs.
- * @return {String[]} The list.
- */
-function getPasswordMakerDeps() {
-  return [
-    self.data.url('js/lib/hashutils.js'),
-    self.data.url('js/lib/aes.js'),
-    self.data.url('js/lib/md4.js'),
-    self.data.url('js/lib/md5.js'),
-    self.data.url('js/lib/md5_v6.js'),
-    self.data.url('js/lib/sha1.js'),
-    self.data.url('js/lib/sha256.js'),
-    self.data.url('js/lib/ripemd160.js'),
-    self.data.url('js/lib/l33t.js'),
-    self.data.url('js/lib/passwordmaker.js')
-  ];
-}
-
-/**
- * Load password maker dependencies.
- */
-function loadPasswordMakerDeps() {
-  var deps = getPasswordMakerDeps();
-
-  for (var i = 0; i < deps.length; i++) {
-    loadScript(deps[i]);
-  }
-}
 
 /**
  * Check if the addon is installed on a mobile phone or not.
@@ -143,16 +107,13 @@ if (!isOnMobile()) {
   var panels = require('sdk/panel');
   var clipboard = require('sdk/clipboard');
 
-  var scripts = getPasswordMakerDeps();
-  scripts.push(self.data.url('js/panel.js'));
-
   // Displaying a panel
   var panel;
   function getPanel() {
     if (!panel) {
       panel = panels.Panel({
         contentURL: self.data.url('panel.html'),
-        contentScriptFile: scripts,
+        contentScriptFile: self.data.url('js/panel.js'),
         height: 170,
         onHide: function () {
           button.state('window', { checked: false });
@@ -174,6 +135,10 @@ if (!isOnMobile()) {
       // @see http://stackoverflow.com/a/26663026
       require('sdk/view/core').getActiveView(panel).setAttribute('tooltip', 'aHTMLTooltip');
 
+      panel.port.on('passwd-generate', function (data) {
+        var passwd = makePassword(data);
+        panel.port.emit('passwd-generated', passwd);
+      });
       panel.port.on('passwd-auto-fill', function (data) {
         getPanel().hide();
         autoFillPasswd(data.passwd);
@@ -234,10 +199,6 @@ if (!isOnMobile()) {
   Cu.import('resource://gre/modules/Services.jsm');
   Cu.import('resource://gre/modules/Prompt.jsm');
 
-  // We will generate passwords here in the main file
-  // So we have to load dependencies now
-  loadPasswordMakerDeps();
-
   // 'clipboard' module not available on Firefox for Android for now
   var clipboardHelper = Cc['@mozilla.org/widget/clipboardhelper;1'].getService(Ci.nsIClipboardHelper);
 
@@ -276,8 +237,8 @@ if (!isOnMobile()) {
 
         // Generate the password
         var opts = {
-          url: data.domain,
-          master: data.password,
+          data: data.domain,
+          masterPassword: data.password,
           username: (cred.username != 'undefined') ? cred.username : '',
           modifier: prefs.modifier || '',
           hashAlgorithm: prefs.hashAlgorithm || 'md5',
@@ -289,7 +250,7 @@ if (!isOnMobile()) {
           charset: charsets[prefs.charset] || charsets['alphanumsym']
         };
 
-        var passwd = generatePassword(opts);
+        var passwd = makePassword(opts);
 
         if (data.button == 0) {
           // Copy to clipboard

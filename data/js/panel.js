@@ -1,10 +1,10 @@
 // List of panel entries
-var domainEntry = document.getElementById("domain"),
-  masterPasswdEntry = document.getElementById("password-master"),
-  generatedPasswdEntry = document.getElementById("password-generated"),
-  copyBtn = document.getElementById("btn-copy"),
-  autoFillBtn = document.getElementById("btn-auto-fill"),
-  saveMasterBtn = document.getElementById("btn-save-master"),
+var domainEntry = document.getElementById('domain'),
+  masterPasswdEntry = document.getElementById('password-master'),
+  generatedPasswdEntry = document.getElementById('password-generated'),
+  copyBtn = document.getElementById('btn-copy'),
+  autoFillBtn = document.getElementById('btn-auto-fill'),
+  saveMasterBtn = document.getElementById('btn-save-master'),
   prefs = null,
   username = '',
   isShowing = false;
@@ -14,8 +14,8 @@ var charsets = {};
 // Called each time an entry is updated
 var onUpdate = function () {
   var opts = {
-    url: domainEntry.value,
-    master: masterPasswdEntry.value,
+    data: domainEntry.value,
+    masterPassword: masterPasswdEntry.value,
     username: username,
     modifier: prefs.modifier || '',
     hashAlgorithm: prefs.hashAlgorithm || 'md5',
@@ -27,12 +27,12 @@ var onUpdate = function () {
     charset: charsets[prefs.charset] || charsets['alphanumsym']
   };
 
-  var passwd = generatePassword(opts);
-
-  generatedPasswdEntry.value = passwd;
-
-  self.port.emit("passwd-generate", { passwd: passwd });
+  self.port.emit('passwd-generate', opts);
 };
+
+self.port.on('passwd-generated', function (passwd) {
+  generatedPasswdEntry.value = passwd;
+});
 
 // @see https://github.com/emersion/firefox-passwordmaker/issues/1
 var updateTimeout = null;
@@ -59,7 +59,7 @@ var hideGeneratedPasswd = function () {
 };
 
 // When this panel is displayed
-self.port.on("show", function onShow(data) {
+self.port.on('show', function onShow(data) {
   prefs = data.prefs;
   charsets = data.charsets;
   isShowing = true;
@@ -110,12 +110,12 @@ masterPasswdEntry.addEventListener('keyup', function onDomainKeyup() {
 
 // Listen for clicks on buttons
 copyBtn.addEventListener('click', function onCopyClick() {
-  self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
+  self.port.emit('passwd-copy', { passwd: generatedPasswdEntry.value });
 });
 
 
 saveMasterBtn.addEventListener('click', function onSaveMasterClick() {
-  self.port.emit("master-passwd-save", { passwd: masterPasswdEntry.value });
+  self.port.emit('master-passwd-save', { passwd: masterPasswdEntry.value });
   saveMasterBtn.disabled = true;
 });
 
@@ -150,9 +150,8 @@ generatedPasswdEntry.addEventListener('click', function () {
 
 // Auto-fill password
 function autoFillPasswd() {
-  if (generatedPasswdEntry.value.length!=0) {
-    //self.port.emit("passwd-copy", { passwd: generatedPasswdEntry.value });
-    self.port.emit("passwd-auto-fill", { passwd: generatedPasswdEntry.value });
+  if (generatedPasswdEntry.value.length != 0) {
+    self.port.emit('passwd-auto-fill', { passwd: generatedPasswdEntry.value });
   }
 }
 

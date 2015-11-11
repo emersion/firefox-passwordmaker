@@ -4,7 +4,7 @@
   "id": "jid1-SbKLzc5j3xRe0w@jetpack",
   "version": "1.0.0",
   "description": "Generate per-website passwords based on a master one.",
-  "icon": "resource://@password-maker-x/data/icon-48.png",
+  "icon": "resource://jid1-SbKLzc5j3xRe0w-at-jetpack/data/icon-48.png",
   "main": "index.js",
   "author": "emersion (http://emersion.fr)",
   "homepage": "https://github.com/emersion/firefox-passwordmaker",
@@ -13,194 +13,211 @@
     "fennec": ">=38.0a1"
   },
   "license": "MIT",
-  "permissions": { "private-browsing": true },
-  "preferences": [{
-    "name": "hashAlgorithm",
-    "title": "Hash algorithm",
-    "type": "menulist",
-    "value": "sha256",
-    "options": [{
+  "permissions": {
+    "private-browsing": true
+  },
+  "preferences": [
+    {
+      "name": "hashAlgorithm",
+      "title": "Hash algorithm",
+      "type": "menulist",
       "value": "sha256",
-      "label": "sha256"
+      "options": [
+        {
+          "value": "sha256",
+          "label": "sha256"
+        },
+        {
+          "value": "hmac-sha256",
+          "label": "hmac-sha256"
+        },
+        {
+          "value": "hmac-sha256_fix",
+          "label": "hmac-sha256_fix"
+        },
+        {
+          "value": "sha1",
+          "label": "sha1"
+        },
+        {
+          "value": "hmac-sha1",
+          "label": "hmac-sha1"
+        },
+        {
+          "value": "md4",
+          "label": "md4"
+        },
+        {
+          "value": "hmac-md4",
+          "label": "hmac-md4"
+        },
+        {
+          "value": "md5",
+          "label": "md5"
+        },
+        {
+          "value": "md5_v6",
+          "label": "md5_v6"
+        },
+        {
+          "value": "hmac-md5",
+          "label": "hmac-md5"
+        },
+        {
+          "value": "hmac-md5_v6",
+          "label": "hmac-md5_v6"
+        },
+        {
+          "value": "rmd160",
+          "label": "rmd160"
+        },
+        {
+          "value": "hmac-rmd160",
+          "label": "hmac-rmd160"
+        }
+      ]
     },
     {
-      "value": "hmac-sha256",
-      "label": "hmac-sha256"
+      "name": "length",
+      "title": "Generated passwords length",
+      "type": "integer",
+      "value": 8
     },
     {
-      "value": "hmac-sha256_fix",
-      "label": "hmac-sha256_fix"
+      "name": "modifier",
+      "title": "Modifier",
+      "type": "string",
+      "value": ""
     },
     {
-      "value": "sha1",
-      "label": "sha1"
-    },
-    {
-      "value": "hmac-sha1",
-      "label": "hmac-sha1"
-    },
-    {
-      "value": "md4",
-      "label": "md4"
-    },
-    {
-      "value": "hmac-md4",
-      "label": "hmac-md4"
-    },
-    {
-      "value": "md5",
-      "label": "md5"
-    },
-    {
-      "value": "md5_v6",
-      "label": "md5_v6"
-    },
-    {
-      "value": "hmac-md5",
-      "label": "hmac-md5"
-    },
-    {
-      "value": "hmac-md5_v6",
-      "label": "hmac-md5_v6"
-    },
-    {
-      "value": "rmd160",
-      "label": "rmd160"
-    },
-    {
-      "value": "hmac-rmd160",
-      "label": "hmac-rmd160"
-    }]
-  },
-  {
-    "name": "length",
-    "title": "Generated passwords length",
-    "type": "integer",
-    "value": 8
-  },
-  {
-    "name": "modifier",
-    "title": "Modifier",
-    "type": "string",
-    "value": ""
-  },
-  {
-    "name": "charset",
-    "title": "Character set",
-    "type": "menulist",
-    "value": "alphanumsym",
-    "options": [{
-      "value": "alpha",
-      "label": "Alphas"
-    },
-    {
-      "value": "alphanum",
-      "label": "Alphanumerics"
-    },
-    {
+      "name": "charset",
+      "title": "Character set",
+      "type": "menulist",
       "value": "alphanumsym",
-      "label": "Alphanumerics & symbols"
+      "options": [
+        {
+          "value": "alpha",
+          "label": "Alphas"
+        },
+        {
+          "value": "alphanum",
+          "label": "Alphanumerics"
+        },
+        {
+          "value": "alphanumsym",
+          "label": "Alphanumerics & symbols"
+        },
+        {
+          "value": "hex",
+          "label": "Hexadecimal"
+        },
+        {
+          "value": "num",
+          "label": "Numbers"
+        },
+        {
+          "value": "sym",
+          "label": "Symbols"
+        },
+        {
+          "value": "custom",
+          "label": "Custom..."
+        }
+      ]
     },
     {
-      "value": "hex",
-      "label": "Hexadecimal"
+      "name": "customCharset",
+      "title": "Custom charset",
+      "type": "string",
+      "value": ""
     },
     {
-      "value": "num",
-      "label": "Numbers"
-    },
-    {
-      "value": "sym",
-      "label": "Symbols"
-    },
-    {
-      "value": "custom",
-      "label": "Custom..."
-    }]
-  },
-  {
-    "name": "customCharset",
-    "title": "Custom charset",
-    "type": "string",
-    "value": ""
-  },
-  {
-    "name": "urlComponents",
-    "title": "URL components",
-    "type": "radio",
-    "value": "domain",
-    "options": [{
+      "name": "urlComponents",
+      "title": "URL components",
+      "type": "radio",
       "value": "domain",
-      "label": "Domain"
+      "options": [
+        {
+          "value": "domain",
+          "label": "Domain"
+        },
+        {
+          "value": "domain+subdomain",
+          "label": "Domain & subdomain(s)"
+        }
+      ]
     },
     {
-      "value": "domain+subdomain",
-      "label": "Domain & subdomain(s)"
-    }]
-  },
-  {
-    "name": "useL33t",
-    "title": "Use l33t",
-    "type": "menulist",
-    "value": "off",
-    "options": [{
+      "name": "useL33t",
+      "title": "Use l33t",
+      "type": "menulist",
       "value": "off",
-      "label": "Never"
+      "options": [
+        {
+          "value": "off",
+          "label": "Never"
+        },
+        {
+          "value": "before-hashing",
+          "label": "Before hashing"
+        },
+        {
+          "value": "after-hashing",
+          "label": "After hashing"
+        },
+        {
+          "value": "both",
+          "label": "Before and after hashing"
+        }
+      ]
     },
     {
-      "value": "before-hashing",
-      "label": "Before hashing"
+      "name": "l33tLevel",
+      "title": "L33t level (1 to 9)",
+      "type": "integer",
+      "value": 1
     },
     {
-      "value": "after-hashing",
-      "label": "After hashing"
+      "name": "prefix",
+      "title": "Password prefix",
+      "type": "string",
+      "value": ""
     },
     {
-      "value": "both",
-      "label": "Before and after hashing"
-    }]
-  },
-  {
-    "name": "l33tLevel",
-    "title": "L33t level (1 to 9)",
-    "type": "integer",
-    "value": 1
-  },
-  {
-    "name": "prefix",
-    "title": "Password prefix",
-    "type": "string",
-    "value": ""
-  },
-  {
-    "name": "suffix",
-    "title": "Password suffix",
-    "type": "string",
-    "value": ""
-  },
-  {
-    "name": "passwordVisibility",
-    "title": "Password visibility",
-    "type": "menulist",
-    "value": "click",
-    "options": [{
+      "name": "suffix",
+      "title": "Password suffix",
+      "type": "string",
+      "value": ""
+    },
+    {
+      "name": "passwordVisibility",
+      "title": "Password visibility",
+      "type": "menulist",
       "value": "click",
-      "label": "Show on click"
+      "options": [
+        {
+          "value": "click",
+          "label": "Show on click"
+        },
+        {
+          "value": "hover",
+          "label": "Show on hover"
+        },
+        {
+          "value": "always",
+          "label": "Always show"
+        }
+      ]
     },
     {
-      "value": "hover",
-      "label": "Show on hover"
-    },
-    {
-      "value": "always",
-      "label": "Always show"
-    }]
-  },
-  {
-    "name": "hotKey",
-    "title": "Keyboard shortcut",
-    "description": "Examples: accel-s, meta-shift-i, control-alt-d, control-shift-i (accel is Ctrl/Cmd). Press this shortcut and Return in a password field to fill it automatically.",
-    "type": "string",
-    "value": "accel-f6"
-  }]
+      "name": "hotKey",
+      "title": "Keyboard shortcut",
+      "description": "Examples: accel-s, meta-shift-i, control-alt-d, control-shift-i (accel is Ctrl/Cmd). Press this shortcut and Return in a password field to fill it automatically.",
+      "type": "string",
+      "value": "accel-f6"
+    }
+  ],
+  "dependencies": {
+    "passwordmaker": "^0.1.0"
+  }
 }
