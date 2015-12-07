@@ -8,18 +8,13 @@ This extension provides a simple PasswordMaker feature for Firefox. It's availab
 Features:
 * Action button with domain name autocompletion, master password saving (in Firefox's secure database) and clipboard support
 * Preferences to manage the profile
-* 13 hashing algorithms:
-  * MD4
-  * HMAC-MD4
-  * MD5
-  * MD5 version 0.6
-  * HMAC-MD5
-  * HMAC-MD5 version 0.6
+* 8 hashing algorithms:
   * SHA-1
   * HMAC-SHA-1
   * SHA-256
   * HMAC-SHA-256
-  * HMAC-SHA-256 version 1.5.1
+  * MD5
+  * HMAC-MD5
   * RIPEMD-160
   * HMAC-RIPEMD-160
 * 6 included character sets
@@ -35,14 +30,17 @@ Installing
 
 You can find the extension on Firefox add-ons website: https://addons.mozilla.org/fr/firefox/addon/password-maker-x/
 
-If you want the latest version, you can install the extension by downloading `passwordmaker.xpi` and loading it from your addon settings (may contain bugs!).
-
 > There is also an Android app available: https://play.google.com/store/apps/details?id=io.github.eddieringle.android.apps.passwordmaker
 
 Building
 --------
 
 This extension was built using the [add-on SDK](https://developer.mozilla.org/en-US/Add-ons/SDK).
+
+Generate the library from [`node-passwordmaker`](https://github.com/emersion/node-passwordmaker):
+```
+npm build
+```
 
 To run the extension:
 ```

@@ -2,7 +2,7 @@
   "title": "Password Maker X",
   "name": "password-maker-x",
   "id": "jid1-SbKLzc5j3xRe0w@jetpack",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Generate per-website passwords based on a master one.",
   "icon": "resource://jid1-SbKLzc5j3xRe0w-at-jetpack/data/icon-48.png",
   "main": "index.js",
@@ -18,6 +18,11 @@
   },
   "dependencies": {
     "passwordmaker": "^0.1.0"
+  },
+  "scripts": {
+    "build": "browserify -r passwordmaker -s module.exports > passwordmaker.js",
+    "xpi": "jpm xpi",
+    "start": "jpm run"
   },
   "preferences": [
     {
@@ -35,10 +40,6 @@
           "label": "hmac-sha256"
         },
         {
-          "value": "hmac-sha256_fix",
-          "label": "hmac-sha256_fix"
-        },
-        {
           "value": "sha1",
           "label": "sha1"
         },
@@ -47,36 +48,20 @@
           "label": "hmac-sha1"
         },
         {
-          "value": "md4",
-          "label": "md4"
-        },
-        {
-          "value": "hmac-md4",
-          "label": "hmac-md4"
-        },
-        {
           "value": "md5",
           "label": "md5"
-        },
-        {
-          "value": "md5_v6",
-          "label": "md5_v6"
         },
         {
           "value": "hmac-md5",
           "label": "hmac-md5"
         },
         {
-          "value": "hmac-md5_v6",
-          "label": "hmac-md5_v6"
+          "value": "ripemd160",
+          "label": "ripemd160"
         },
         {
-          "value": "rmd160",
-          "label": "rmd160"
-        },
-        {
-          "value": "hmac-rmd160",
-          "label": "hmac-rmd160"
+          "value": "hmac-ripemd160",
+          "label": "hmac-ripemd160"
         }
       ]
     },
@@ -219,5 +204,8 @@
       "type": "string",
       "value": "accel-f6"
     }
-  ]
+  ],
+  "devDependencies": {
+    "browserify": "^12.0.1"
+  }
 }

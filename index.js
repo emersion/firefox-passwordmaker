@@ -2,7 +2,7 @@ var self = require('sdk/self');
 var tabs = require('sdk/tabs');
 var urls = require('sdk/url');
 
-var makePassword = require('passwordmaker');
+var makePassword = require('./passwordmaker');
 
 var passwords = require('sdk/passwords');
 var prefs = require('sdk/simple-prefs').prefs;
@@ -136,7 +136,12 @@ if (!isOnMobile()) {
       require('sdk/view/core').getActiveView(panel).setAttribute('tooltip', 'aHTMLTooltip');
 
       panel.port.on('passwd-generate', function (data) {
-        var passwd = makePassword(data);
+        var passwd = '';
+        try {
+          passwd = makePassword(data);
+        } catch (err) {
+          console.error('Could not generate password:', err);
+        }
         panel.port.emit('passwd-generated', passwd);
       });
       panel.port.on('passwd-auto-fill', function (data) {

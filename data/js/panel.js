@@ -27,6 +27,10 @@ var onUpdate = function () {
     charset: charsets[prefs.charset] || charsets['alphanumsym']
   };
 
+  if (!opts.masterPassword) {
+    return;
+  }
+
   self.port.emit('passwd-generate', opts);
 };
 
