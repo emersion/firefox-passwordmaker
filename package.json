@@ -2,7 +2,7 @@
   "title": "Password Maker X",
   "name": "password-maker-x",
   "id": "jid1-SbKLzc5j3xRe0w@jetpack",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Generate per-website passwords based on a master one.",
   "icon": "resource://jid1-SbKLzc5j3xRe0w-at-jetpack/data/icon-48.png",
   "main": "index.js",
@@ -56,12 +56,12 @@
           "label": "hmac-md5"
         },
         {
-          "value": "ripemd160",
-          "label": "ripemd160"
+          "value": "rmd160",
+          "label": "rmd160"
         },
         {
-          "value": "hmac-ripemd160",
-          "label": "hmac-ripemd160"
+          "value": "hmac-rmd160",
+          "label": "hmac-rmd160"
         }
       ]
     },
