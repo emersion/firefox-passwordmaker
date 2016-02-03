@@ -2,7 +2,7 @@
   "title": "Password Maker X",
   "name": "password-maker-x",
   "id": "jid1-SbKLzc5j3xRe0w@jetpack",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Generate per-website passwords based on a master one.",
   "icon": "resource://jid1-SbKLzc5j3xRe0w-at-jetpack/data/icon-48.png",
   "main": "index.js",
