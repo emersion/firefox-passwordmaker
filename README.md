@@ -3,6 +3,11 @@ PasswordMaker
 
 This extension provides a simple PasswordMaker feature for Firefox. It's available on Firefox for Linux, Windows, OS X and Android.
 
+Unmaintained
+------------
+
+This addon is not maintained anymore, please use the WebExtension version instead: https://github.com/emersion/passwordmaker
+
 ![PasswordMaker 0.11](https://cloud.githubusercontent.com/assets/506932/8762930/6fca6812-2d87-11e5-911b-6a7e354fcc45.png)
 
 Features:
